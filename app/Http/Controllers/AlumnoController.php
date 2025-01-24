@@ -9,7 +9,7 @@ class AlumnoController extends Controller
 {
     public function index()
     {
-        return Alumno::all(); // Retorna todos los alumnos
+        return Alumno::all();
     }
 
     public function store(Request $request)
@@ -19,13 +19,11 @@ class AlumnoController extends Controller
             'telefono' => 'nullable|string|max:16',
             'edad' => 'nullable|integer',
             'password' => 'required|string|max:64',
-            'email' => 'required|string|email|max:64|unique:alumnos', // ⚠️ 'alumnos' corregido
+            'email' => 'required|string|email|max:64|unique:alumnos',
             'sexo' => 'required|string',
         ]);
 
-        // Se asegura de crear el registro con los campos validados
-        $alumno = Alumno::create($data); 
-        
+        $alumno = Alumno::create($data);
         return response()->json($alumno, 201);
     }
 
@@ -41,12 +39,12 @@ class AlumnoController extends Controller
             'telefono' => 'nullable|string|max:16',
             'edad' => 'nullable|integer',
             'password' => 'sometimes|string|max:64',
-            'email' => 'sometimes|string|email|max:64|unique:alumnos,email,'.$id, // Evitar conflictos de "email único"
+            'email' => 'sometimes|string|email|max:64|unique:alumnos,email,' . $id,
             'sexo' => 'sometimes|string',
         ]);
 
         $alumno = Alumno::findOrFail($id);
-        $alumno->update($data); // Se asegura de usar los datos validados
+        $alumno->update($data);
         return response()->json($alumno, 200);
     }
 

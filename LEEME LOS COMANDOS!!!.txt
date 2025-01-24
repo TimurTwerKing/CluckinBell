@@ -5,3 +5,10 @@
 5	php artisan db:seed --class=AlumnoSeeder			(Llena la tabla alumnos con los registros del seeder.)
 6	php artisan make:controller AlumnoController --api		(Crea el controlador con operaciones CRUD para alumnos.)
 7	php artisan make:middleware IdCheckMiddleware			(Crea un middleware para verificar que el ID sea válido.)
+
+php artisan make:model Alumno -m
+php artisan make:model Profesor -m
+php artisan make:model Director -m
+php artisan make:model Colegio -m
+
+php artisan make:migration create_profesor_colegio_table
