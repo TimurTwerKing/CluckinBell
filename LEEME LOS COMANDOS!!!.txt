@@ -12,3 +12,36 @@ php artisan make:model Director -m
 php artisan make:model Colegio -m
 
 php artisan make:migration create_profesor_colegio_table
+php artisan make:migration create_director_colegio_table
+php artisan make:migration create_alumno_colegio_table
+
+
+php artisan make:controller AlumnoController
+php artisan make:controller ProfesorController
+php artisan make:controller DirectorController
+php artisan make:controller ColegioController
+
+
+# Incluye el recurso del controlador y migración
+php artisan make:model Alumno -mcr
+php artisan make:model Profesor -mcr
+php artisan make:model Director -mcr
+php artisan make:model Colegio -mcr
+
+php artisan make:seeder AlumnoSeeder
+php artisan make:seeder ProfesorSeeder
+php artisan make:seeder ColegioSeeder
+php artisan make:seeder DirectorSeeder
+
+php artisan make:factory AlumnoFactory --model=Alumno
+php artisan make:factory ProfesorFactory --model=Profesor
+php artisan make:factory ColegioFactory --model=Colegio
+php artisan make:factory DirectorFactory --model=Director
+
+
+# Ejecutar migraciones
+php artisan migrate:fresh
+
+# Ejecutar seeders para generar datos de relleno
+php artisan db:seed
+

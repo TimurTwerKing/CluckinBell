@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profesor extends Model
 {
-    public function colegios(){
-        return $this->belongsToMany(Colegio::class);
+    public function alumnos()
+    {
+        return $this->hasMany(Alumno::class);
     }
-    public function alumnos(){
-        return $this->belongsToMany(Alumno::class);
-    }
+    public function colegio()
+{
+    return $this->belongsTo(Colegio::class);
+}
 }

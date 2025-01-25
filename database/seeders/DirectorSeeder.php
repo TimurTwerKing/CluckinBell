@@ -3,12 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Alumno;
+use App\Models\Director;
 
-class AlumnoSeeder extends Seeder
+class DirectorSeeder extends Seeder
 {
+
     public function run()
     {
-        Alumno::factory()->count(10)->create();
+        Director::factory()->count(3)->create();
     }
 }

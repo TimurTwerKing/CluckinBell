@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Director extends Model
 {
-    public function colegios(){
+    public function colegio()
+    {
         return $this->belongsTo(Director::class);
     }
 }

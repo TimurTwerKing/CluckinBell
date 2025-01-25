@@ -3,10 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Models\Colegio;
 use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
 {
+
+    public function showAlumno($id)
+    {
+        $alumno = Alumno::with(['colegio', 'profesor'])->findOrFail($id);
+
+        return response()->json($alumno);
+    }
+
+    public function getColegio($id)
+    {
+        $alumno = Alumno::with('colegio')->findOrFail($id);
+        return response()->json($alumno->colegio);
+    }
+
+    public function getProfesor($id)
+    {
+        $alumno = Alumno::with('profesor')->findOrFail($id);
+        return response()->json($alumno->profesor);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function index()
     {
         return Alumno::all();

@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alumno extends Model
 {
-    public function profesors(){
-        return $this->hasMany(Alumno::class);
+    public function profesor()
+    {
+        return $this->belongsTo(Profesor::class);
     }
+    public function colegio(){
+        return $this->belongsTo(Colegio::class);
+    }
+
     use HasFactory;
     protected $table = 'alumnos';
 
