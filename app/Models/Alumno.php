@@ -9,7 +9,7 @@ class Alumno extends Model
 {
     public function profesor()
     {
-        return $this->belongsTo(Profesor::class);
+        return $this->hasMany(Profesor::class);
     }
     public function colegio(){
         return $this->belongsTo(Colegio::class);
