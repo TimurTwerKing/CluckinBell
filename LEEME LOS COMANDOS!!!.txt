@@ -45,3 +45,8 @@ php artisan migrate:fresh
 # Ejecutar seeders para generar datos de relleno
 php artisan db:seed
 
+LOGIN/AUTENTIFICADOR:
+
+php artisan make:controller AuthController
+php artisan make:middleware CheckAuth
+

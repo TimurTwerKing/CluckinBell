@@ -6,6 +6,9 @@ use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Middleware\IdCheckMiddleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Middleware\CheckAuth;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,3 +40,9 @@ Route::get('colegios/{id}/director', [ColegioController::class, 'getDirector']);
 
 // Rutas para Director
 Route::get('directores/{id}/colegio', [DirectorController::class, 'getColegio']);
+
+// Rutas para Auth
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout'])->middleware(CheckAuth::class);
+Route::get('user/me', [AuthController::class, 'me'])->middleware(CheckAuth::class);
+Route::get('users/{id}', [AuthController::class, 'show'])->middleware(CheckAuth::class);
