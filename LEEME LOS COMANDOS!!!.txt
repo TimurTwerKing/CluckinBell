@@ -50,3 +50,10 @@ LOGIN/AUTENTIFICADOR:
 php artisan make:controller AuthController
 php artisan make:middleware CheckAuth
 
+# passport
+
+descomentar linea (extension=sodium) en C:\xampp\php\php.ini
+OPCIONAL actualuzar dependencias Auth : composer update --with-all-dependencies
+composer require laravel/passport
+php artisan install:api --passport
+# php artisan passport:keys

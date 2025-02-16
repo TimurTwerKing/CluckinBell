@@ -8,6 +8,7 @@ use App\Http\Middleware\IdCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\CheckAuth;
+use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
@@ -46,3 +47,12 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->middleware(CheckAuth::class);
 Route::get('user/me', [AuthController::class, 'me'])->middleware(CheckAuth::class);
 Route::get('users/{id}', [AuthController::class, 'show'])->middleware(CheckAuth::class);
+
+// Rutas para Passport
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api');
+

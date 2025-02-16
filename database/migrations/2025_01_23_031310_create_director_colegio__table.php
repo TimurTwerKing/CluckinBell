@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('director_colegio', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('colegio_id')->constrained();
-            $table->foreignId('director_id')->constrained();
+            $table->foreignId('colegio_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('director_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
